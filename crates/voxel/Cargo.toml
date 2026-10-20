@@ -1,8 +1,10 @@
 [package]
 name = "test-cabinet-voxel"
+description = "The cube voxel domain and the voxel binary a run image carries to sculpt a static voxel model."
 edition.workspace = true
 version.workspace = true
 license.workspace = true
+repository.workspace = true
 publish.workspace = true
 
 # The cube voxel domain for 3D asset-generation test cases: the dense voxel volume
@@ -13,7 +15,7 @@ publish.workspace = true
 # rig/animation model, color, config, and the record/preview plumbing — that this
 # crate depends on and re-exports. The `voxel` binary uses the library in the run
 # container to turn the model's operations into a volume, a preview, and a
-# per-part `.glb`; `crates/driver` links the same library to replay the recorded log.
+# per-part `.glb`; the driver links the same library to replay the recorded log.
 # `crates/voxel-anim` is the rigged, animated sibling binary over this same library.
 [lib]
 name = "test_cabinet_voxel"
@@ -21,7 +23,7 @@ path = "src/lib.rs"
 
 # The `voxel` CLI the model invokes inside the run container to sculpt a single
 # static model. Gated behind the `cli` feature (on by default) so that
-# `crates/driver`, which depends on this crate with `default-features = false`, links
+# the driver, which depends on this crate with `default-features = false`, links
 # only the pure library and never pulls in clap or serde_json.
 [[bin]]
 name = "voxel"

@@ -8,13 +8,13 @@
 //! model takes many operations, so rendering is an explicit, on-request step — the
 //! `render` command — that the model runs to inspect its work and, before finishing,
 //! to emit the mesh `.glb` the run's result is built from. The recorded log is always
-//! the single source of truth: after the run, `crates/driver` replays it through the
+//! the single source of truth: after the run, the driver replays it through the
 //! same [`test_cabinet_voxel`] library to count the occupied voxels, so a volume
 //! produced any other way cannot match. The operation subcommands' `--help` is the
 //! contract; no operations schema is seeded. `render` emits a face-culled cube `.glb`
 //! (the geometry the 3D client renders) alongside the preview.
 //!
-//! See `apps/docs/src/content/docs/testing/asset-generation/`.
+//! See <https://docs.testcabinet.ai/testing/asset-generation/voxel-binaries/>.
 
 use std::path::PathBuf;
 use std::process::ExitCode;

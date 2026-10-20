@@ -1,16 +1,16 @@
 //! The voxel-sculpting tool for 3D asset-generation test cases.
 //!
-//! See `apps/docs/src/content/docs/testing/asset-generation/`. The model sculpts a
-//! model by issuing [`Operation`]s through the `voxel` (static) or `voxel-anim`
-//! (rigged) binary; the recorded list of operations — not the voxels left on disk —
-//! is the authoritative output of a run. [`render`] turns that list back into a
-//! voxel volume, and it is the **one** sculpting implementation: the binary calls
-//! it to re-render the isometric preview after every operation, and `crates/driver`
-//! calls it to replay the recorded log — validating it and counting occupied voxels.
-//! Because both go through the same code, a volume produced by any other means
-//! cannot match the regeneration — which is what makes the constrained sculpting
-//! channel enforceable. This mirrors tool-sprite's `crates/draw`, the 2D pixel
-//! analog.
+//! See <https://docs.testcabinet.ai/testing/asset-generation/voxel-binaries/>.
+//! The model sculpts a model by issuing [`Operation`]s through the `voxel`
+//! (static) or `voxel-anim` (rigged) binary; the recorded list of operations —
+//! not the voxels left on disk — is the authoritative output of a run. [`render`]
+//! turns that list back into a voxel volume, and it is the **one** sculpting
+//! implementation: the binary calls it to re-render the isometric preview after
+//! every operation, and the driver calls it to replay the recorded log —
+//! validating it and counting occupied voxels. Because both go through the same
+//! code, a volume produced by any other means cannot match the regeneration —
+//! which is what makes the constrained sculpting channel enforceable. This mirrors
+//! tool-sprite's `crates/draw`, the 2D pixel analog.
 
 #[cfg(feature = "cli")]
 pub mod cli;
@@ -20,7 +20,7 @@ pub mod ops;
 
 // The generic model types live in `test-cabinet-model-core`. Re-export them (and
 // their modules) here so this crate's public surface — and its downstream consumers
-// like `crates/driver`, which reach them as `test_cabinet_voxel::Rig`,
+// like the driver, which reach them as `test_cabinet_voxel::Rig`,
 // `test_cabinet_voxel::rig::Keyframe`, `test_cabinet_voxel::color::Rgb`, etc. — is
 // unchanged by the split.
 pub use test_cabinet_model_core::{axis, color, rig};
