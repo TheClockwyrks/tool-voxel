@@ -32,13 +32,13 @@ all = "deny"
 # never names an Azure URL or a path outside the repository: the
 # dependency-edges gate refuses both.
 [workspace.dependencies]
-test-cabinet-contracts = { git = "https://github.com/TheClockwyrks/contracts", tag = "v0.2.2" }
+test-cabinet-contracts = { git = "https://github.com/TheClockwyrks/contracts", tag = "v0.2.4" }
 # The model core the voxel crates build on: the rig/animation model, color,
 # config, the record/preview plumbing and the shared mesh preview renderer.
 # Taken without its default features, so the voxel library alone never
 # compiles the renderer stack; the voxel crate's `cli` feature, and voxel-anim,
 # turn its `cli` feature on.
-test-cabinet-model-core = { git = "https://github.com/TheClockwyrks/tool-model-core", tag = "v0.1.0", default-features = false }
+test-cabinet-model-core = { git = "https://github.com/TheClockwyrks/tool-model-core", tag = "v0.1.2", default-features = false }
 
 # The third-party crates the members share, at the requirements the monorepo
 # held them to when the crates were extracted from it.
